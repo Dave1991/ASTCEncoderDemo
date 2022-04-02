@@ -61,7 +61,9 @@ bool store_ktx_compressed_image(const astc_compressed_image& img, const char* fi
     NSArray<NSString *> *pngList = [[NSBundle mainBundle] pathsForResourcesOfType:@"png" inDirectory:@"pngList"];
     int index = 0;
     for (NSString *pngPath in pngList) {
+        NSLog(@"begin compression");
         [self compressImage:[UIImage imageWithContentsOfFile:pngPath] dstPath:[astcDir stringByAppendingFormat:@"/%d.astc", index]];
+        NSLog(@"end compression");
         ++index;
     }
 }
